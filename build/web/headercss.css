@@ -1,0 +1,57 @@
+header {
+
+    background: #148cf5;
+
+}
+
+
+#logo {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;/*Coloca  a logo no começo e os links no final*/
+    white-space: nowrap; /*Não deixa acontecer quebra de linha*/
+    padding-top: 20px;
+    padding-bottom: 10px;
+    
+
+}
+
+.itens {
+
+padding-top: 3px;
+
+}
+
+
+
+
+ul > li {
+
+    list-style: none;
+    display: inline;
+    margin-right: 20px;
+
+}
+
+header a {
+
+text-decoration: none;
+color: white;
+
+}
+
+
+#img_logo {
+
+    max-height: 31px;
+    max-width: 31px;
+    
+
+}
+
+#move {
+    
+       padding-top: 20px;
+    
+}
