@@ -29,12 +29,13 @@ create table instituicao (
 	idinstituicao serial primary key,
 	nomeinstituicao varchar (100) not null,
 	cnpj varchar (14) not null,
-	situacao varchar (1) not null
+	situacao varchar (1) not null,
+        foto text
 );
 	
 drop table instituicao;
 
-insert into instituicao (nomeinstituicao, cnpj,situacao) values ('fef','12345678910110','A');
+insert into instituicao (nomeinstituicao, cnpj,situacao, foto) values ('fef','12345678910110','A', null);
 
 create table curso (
 	idcurso serial primary key,
@@ -143,26 +144,150 @@ insert into tipoatividade (descricao, situacao) values ('Atividade 1','A');
 
 create or replace view usuario as 
 select p.idpessoa, p.nomerazaopessoa, p.cpfcnpjpessoa, p.login, p.senha, 
-a.idadministrador as id, 'Administrador' as tipo
+a.idadministrador as id, 'Administrador' as tipo, p.foto
 from pessoa p, administrador a
 where a.idpessoa = p.idpessoa and a.situacao = 'A' and a.permitelogin = 'S'
 union
 select p.idpessoa, p.nomerazaopessoa, p.cpfcnpjpessoa, p.login, p.senha, 
-o.idorganizador as id, 'Organizador' as tipo
+o.idorganizador as id, 'Organizador' as tipo, p.foto
 from pessoa p, organizador o
 where o.idpessoa = p.idpessoa and o.situacao = 'A' and o.permitelogin = 'S'
 union
 select p.idpessoa, p.nomerazaopessoa, p.cpfcnpjpessoa, p.login, p.senha, 
-f.idfornecedor as id, 'Fornecedor' as tipo
+f.idfornecedor as id, 'Fornecedor' as tipo, p.foto
 from pessoa p, fornecedor f
 where f.idpessoa = p.idpessoa and f.situacao = 'A' and f.permitelogin = 'S'
 union
 select p.idpessoa, p.nomerazaopessoa, p.cpfcnpjpessoa, p.login, p.senha, 
-d.idpatrocinador as id, 'Patrocinador' as tipo
+d.idpatrocinador as id, 'Patrocinador' as tipo, p.foto
 from pessoa p, patrocinador d
 where d.idpessoa = p.idpessoa and d.situacao = 'A' and d.permitelogin = 'S'
 union
 select p.idpessoa, p.nomerazaopessoa, p.cpfcnpjpessoa, p.login, p.senha, 
-t.idparticipante as id, 'Participante' as tipo
+t.idparticipante as id, 'Participante' as tipo, p.foto
 from pessoa p, participante t
 where t.idpessoa = p.idpessoa and t.situacao = 'A' and t.permitelogin = 'S'
+
+create table evento (
+    idevento serial primary key,
+    nomeevento varchar (100),
+    valorevento numeric,
+    valoreventoprazo numeric,
+    datainicioevento date,
+    dataterminoevento date,
+    informacaoevento varchar (100),
+    situacaoevento  varchar (1),
+    saldocaixa numeric,
+    situacaocaixa varchar (25),
+    foto text,
+    idcurso int not null,
+    constraint fk_curso_evento foreign key (idcurso) references curso(idcurso)
+);
+
+insert into evento (nomeevento, valorevento, valoreventoprazo, datainicioevento, dataterminoevento, informacaoevento, 
+situacaoevento, saldocaixa, situacaocaixa, foto, idcurso) values ('Corrida Acadêmica', 50.00, 75.00, '24/09/2022', '24/10/2022', 
+'Evento Encerrado', 'A', 1500.00, 'Saldo Positivo', null, 1);
+
+create table organizadorevento(
+	idorganizadorevento serial not null primary key,
+	idorganizador integer not null,
+	idevento integer not null,
+	idfuncao integer not null,
+	constraint fk_id_organizador foreign key(idorganizador) references organizador(idorganizador),
+	constraint fk_id_evento foreign key(idevento) references evento(idevento),
+	constraint fk_id_funcao foreign key(idfuncao) references funcao(idfuncao)
+);
+
+insert into organizadorevento(idorganizador, idevento, idfuncao) values (1, 1, 1);
+
+create table doacao(
+	iddoacao serial primary key,
+	idpatrocinador integer,
+	valordoacao numeric,
+	datadoacao date,
+	descricao varchar(200),
+	situacao varchar(1),
+	constraint fk_patrocinador foreign key(idpatrocinador) references patrocinador(idpatrocinador)
+);
+
+insert into doacao(idpatrocinador, valordoacao, datadoacao, descricao, situacao) values
+(1, 1500.00, '20/11/2022', 'Depósito Teste', 'A');
+
+create table despesa(
+	iddespesa serial primary key,
+	idfornecedor integer,
+	valordespesa numeric,
+	vencimentodespesa date,
+	pagamentodespesa date,
+	descricao varchar(150),
+	situacao varchar(1),
+	constraint fk_fornecedor foreign key(idfornecedor) references fornecedor(idfornecedor)
+);
+
+insert into despesa (idfornecedor, valordespesa, vencimentodespesa, pagamentodespesa, descricao, situacao) values
+(1, 152.20, '22/11/2022', '20/11/2022', 'Estrutura', 'A');
+
+create table atividadeevento(
+	idatividadeevento serial primary key,
+	cargahoraria numeric,
+	nomeatividade varchar(150),
+	resumo varchar(200),
+	dataatividade date,
+	horaatividade numeric,
+	idevento integer,
+	idtipoatividade integer,
+	constraint fk_tipoatividade foreign key (idtipoatividade) references tipoatividade(idtipoatividade),
+	constraint fk_atividadeevento foreign key (idevento) references evento (idevento)
+);
+
+insert into atividadeevento (cargahoraria, nomeatividade, resumo, dataatividade, horaatividade, idevento,idtipoatividade) values
+(100.0, 'Extensão', 'Evento de Extensão', '25/11/2022', '30', 1,1);
+
+create table inscricao(
+	idinscricao serial primary key,
+	nropulseira varchar(50),
+	chaveqrcode varchar(100),
+	datainscricao date,
+	situacao varchar(1),
+	valorinscricao numeric,
+	nroparcelas integer,
+	parcelaspagas numeric,
+	parcelaspagar numeric,
+	parcelascanceladas numeric,
+	parcelasestorno numeric,
+	idevento integer,
+	idparticipante integer,
+	constraint fk_inscricao_evento foreign key (idevento) references evento(idevento),
+	constraint fk_participante_inscricao foreign key (idparticipante) references participante(idparticipante)
+);
+
+insert into inscricao (nropulseira, chaveqrcode, datainscricao, situacao, valorinscricao, nroparcelas ,
+parcelaspagas, parcelaspagar, parcelascanceladas, parcelasestorno, idevento, idparticipante) values
+('1478523599', 'S7GS8EHR8H8237R1BBHSBCA7W7', '24.11.2022', 'A', 150.00, 10, 2.0, 8.0, 0.0, 1.0, 1, 1);
+
+create table estorno(
+	idestorno serial primary key,
+	valorestorno numeric,
+	datapagamento date,
+	descricao varchar(100),
+	dataestorno date,
+	situacao varchar(1)
+)
+
+insert into estorno (idestorno, valorestorno, datapagamento, descricao, dataestorno, situacao) values
+(1, 152.20, '22/11/2022', 'Estrutura', '20/11/2022', 'A');
+
+create table parcelamento(
+	idparcelamento serial primary key,
+	nroparcela integer,
+	valorparcela numeric,
+	datavencimento date,
+	datapagamento date,
+	situacao varchar(1),
+	descricao varchar
+);
+
+insert into parcelamento(idparcelamento,nroparcela, valorparcela, datavencimento, datapagamento, situacao, descricao)
+values (1,1,50.00,'30/11/2022','29/11/2022','A','Parcela teste');
+
+select * from parcelamento

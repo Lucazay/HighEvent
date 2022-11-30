@@ -34,6 +34,7 @@ public class UsuarioLogar extends HttpServlet {
                 sessao.setAttribute("idusuario", oUsuario.getId());
                 sessao.setAttribute("nomeusuario", oUsuario.getNomeRazaoPessoa());
                 sessao.setAttribute("tipousuario", oUsuario.getTipo());
+                sessao.setAttribute("foto", oUsuario.getFoto());
                 usuarioLogado = "ok";
             }else{
                 //usuario recusado

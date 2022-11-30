@@ -1,4 +1,4 @@
-    
+
 package br.com.curso.controller.usuario;
 
 import java.io.IOException;
@@ -19,8 +19,7 @@ public class UsuarioDeslogar extends HttpServlet {
         try{
             HttpSession sessao = request.getSession(false);
             sessao.invalidate();
-            response.sendRedirect("login.jsp");
-            
+            response.sendRedirect("index.jsp");
         }catch(Exception ex){
             System.out.println("Problema no servlet UsuarioDeslogar! Erro: "+ex.getMessage());
             ex.printStackTrace();

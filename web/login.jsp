@@ -1,45 +1,72 @@
 <%@taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"%>
-<jsp:include page="header.jsp"/>
-<link href="cadastros/CSS/logincss.css" rel="stylesheet" type="text/css"/>
+<jsp:include page="header-login.jsp"/>
 
-
-<div class="login">
-    
-    <h1>High Event</h1>
+<!--<h1>Sistema Exemplo - CRUD - Deslogado</h1>
+<h2>Login Sistema</h2>
     <div>
         <label for="login">Login</label>
-        <input class="credencial" type="text" id="login" name="login" required="" placeholder="Login"
+        <input type="text" id="login" name="login" required="" placeholder="Coloque seu login"
                onblur="BuscarUsuariosPorNome()">
     </div>
     <div>
         <label for="senha">Senha</label>
-        <input class="credencial" type="password" id="senha" name="senha" required="" placeholder="Senha"
+        <input type="password" id="senha" name="senha" required="" placeholder="Coloque sua senha"
                onblur="BuscarUsuariosPorNome()">
     </div>
     <div>
-        <label for="tipo">Tipo Usuário</label>
+        <label for="tipo">Tipo Usu?rio</label>
         <select name="tipo" id="tipo" tabindex="2">
             <option value="">Selecione</option>
         </select>
     </div>
-<div><button id="submit" class="btn btn-primary btn-block btn-large mt-2">Logar</button>
-    <a href="home.jsp"><button class="btn btn-primary btn-block btn-large mt-2">Voltar</button></a>
-
-</div>
+<div></div>
 </br>
-<div id="erro"></div>
-</div>
+<div id="erro"></div>-->
+
+<div class="container mt-5" id="caixa">
+
+    <div>
+        
+        <div id="cab">
+            <img src="img/logoOficial.png" alt="">
+            <h1>igh Event</h1> 
+        </div>
+
+        <form id="formWork" method="POST">
+
+        <label for="">Usuário:</label>
+        <div class="input-control"><input class="form-control" type="text" name="nome" id="login" placeholder="Ex: Antônio" onblur="BuscarUsuariosPorNome()"></div>
+        <label for="">Senhar:</label>
+        <div class="input-control"><input class="form-control" type="password" name="senha" id="senha" placeholder="Ex: 123" onblur="BuscarUsuariosPorNome()"></div>
+        
+        <label for="tipo">Tipo Usuário</label>
+        <select name="tipo" id="tipo" tabindex="2">
+            <option value="">Selecionar</option>
+        </select>
+
+        <div class="btn_site" id="btn-control">
+            
+            <a id="submit" class="btn-1"> <div>Entrar</div></a>
+           
+            <a href="home.jsp" class="btn-1"> <div>Voltar</div></a>
+            
+        </div>
+        </form>
+
+    </div>
+        <label for="" id="cadastre-se"><a href="">Cadastre-se</a></label>
+    </div> 
 
 <script>
     $(document).ready(function(){
-        console.log("Entrei na função...");
+        console.log("Entrei na fun??o...");
         
         $("#submit").on("click", function(){
-            console.log("entrei na função click do submit");
+            console.log("entrei na fun??o click do submit");
             
             if ($('#login').val() === ""){
                 $('#login').focus();
-                $('#erro').html("<div> Por favor, preencher o campo usuário. </div>").show();
+                $('#erro').html("<div> Por favor, preencher o campo usu?rio. </div>").show();
                 tempo();
                 return false;               
             }
@@ -68,7 +95,7 @@
                             }else{
                                 $('#submit').removeAttr('disabled');
                                 $("#submit").html('Entrar');
-                                $("#wrapper_error").html("<div class='alert alert-danger'> Usuário ou senha incorreto.</div>").show();
+                                $("#wrapper_error").html("<div class='alert alert-danger'> Usu?rio ou senha incorreto.</div>").show();
                                 tempo();                
                             }
                         },
@@ -91,7 +118,7 @@
             console.log("entre na funcion buscarusuariospornome");
             $('#tipo').empty();
             loginUsuario = $('#login').val();
-            console.log('Esse é o login do usuatio' +loginUsuario);
+            console.log('Esse ? o lgin do usuatio' +loginUsuario);
             
             if (loginUsuario != 'null'){
                 console.log("vai rodar o ajax");
@@ -118,5 +145,3 @@
         }
     }
 </script>
- <%@include file="/footer.jsp"%>
-    

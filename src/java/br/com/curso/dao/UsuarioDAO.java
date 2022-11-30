@@ -37,7 +37,8 @@ public class UsuarioDAO {
                 rs.getString("login"),
                 rs.getString("senha"),
                 rs.getString("tipo"),
-                rs.getInt("id"));
+                rs.getInt("id"),
+                rs.getString("foto"));
             }
             return oUsuario;
         }catch(SQLException ex){
@@ -65,7 +66,8 @@ public class UsuarioDAO {
                 rs.getString("login"),
                 rs.getString("senha"),
                 rs.getString("tipo"),
-                rs.getInt("id"));
+                rs.getInt("id"),
+                rs.getString("foto"));
                 lstUsuario.add(oUsuario);
             }
         }catch(SQLException ex){

@@ -28,6 +28,9 @@ public class Patrocinador extends Pessoa{
         return oPatrocinador;
     }
 
+    public Patrocinador() {
+    }
+
     public int getIdPatrocinador() {
         return idPatrocinador;
     }
@@ -51,6 +54,7 @@ public class Patrocinador extends Pessoa{
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
-    
-    
+
+
+
 }

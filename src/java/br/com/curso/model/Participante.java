@@ -30,6 +30,9 @@ public class Participante extends Pessoa{
         return oParticipante;
     }
 
+    public Participante() {
+    }
+
     public int getIdParticipante() {
         return idParticipante;
     }

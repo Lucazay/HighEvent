@@ -11,14 +11,18 @@ public class Usuario {
     private String senha;
     private String tipo;
     private int id;
+    private String foto;
+    
+    //todo 
     
     public Usuario(){
         this.idPessoa = 0;
         this.id = 0;
         this.tipo = "";
+        this.foto = "";
     }
 
-    public Usuario(int idPessoa, String nomeRazaoPessoa, String cpfCnpjPessoa, String login, String senha, String tipo, int id) {
+    public Usuario(int idPessoa, String nomeRazaoPessoa, String cpfCnpjPessoa, String login, String senha, String tipo, int id, String foto) {
         this.idPessoa = idPessoa;
         this.nomeRazaoPessoa = nomeRazaoPessoa;
         this.cpfCnpjPessoa = cpfCnpjPessoa;
@@ -26,6 +30,7 @@ public class Usuario {
         this.senha = senha;
         this.tipo = tipo;
         this.id = id;
+        this.foto = foto;
     }
 
     public int getIdPessoa() {
@@ -83,6 +88,16 @@ public class Usuario {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+    
+    
     
     public static boolean verificaUsuario (String recurso, HttpSession sessao){
         boolean status = false;
@@ -156,33 +171,7 @@ public class Usuario {
                         }
                             
                     }
-                    /* Parado aqui */
-                    if (tipoUsuario.equalsIgnoreCase("Fornecedor")){
-                        System.out.println("O tipo do usuario é: "+tipoUsuario);
-                        if (recurso.equalsIgnoreCase("/FornecedorCarregar") ||
-                                recurso.equalsIgnoreCase("/FornecedorExcluir") ||
-                                recurso.equalsIgnoreCase("/FornecedorAlterar") ||
-                                recurso.equalsIgnoreCase("/FornecedorListar") ||
-                                recurso.equalsIgnoreCase("/cadastros/menuLogado.jsp") ||
-                                recurso.equalsIgnoreCase("/cadastros/menuFornecedor.jsp") ||
-                                recurso.equalsIgnoreCase("/cadastros/homeLogado.jsp")){
-                            status = true; //permite acesso ao usuario tipo fornecedor
-                        }          
-                    }   
-                    
-                    if (tipoUsuario.equalsIgnoreCase("Patrocinador")){
-                        System.out.println("O tipo do usuario é: "+tipoUsuario);
-                        if (recurso.equalsIgnoreCase("/PatrocinadorCarregar") ||
-                                recurso.equalsIgnoreCase("/PatrocinadorExcluir") ||
-                                recurso.equalsIgnoreCase("/PatrocinadorAlterar") ||
-                                recurso.equalsIgnoreCase("/PatrocinadorListar") ||
-                                recurso.equalsIgnoreCase("/cadastros/menuLogado.jsp") ||
-                                recurso.equalsIgnoreCase("/cadastros/menuFornecedor.jsp") ||
-                                recurso.equalsIgnoreCase("/cadastros/homeLogado.jsp")){
-                            status = true; //permite acesso ao usuario tipo fornecedor
-                        }          
-                    }
-                    
+
                     if (tipoUsuario.equalsIgnoreCase("Participante")){
                         System.out.println("O tipo do usuario é: "+tipoUsuario);
                         if (recurso.equalsIgnoreCase("/ParticipanteCarregar") ||

@@ -26,8 +26,9 @@ public class InstituicaoCadastrar extends HttpServlet {
             String nomeInstituicao = request.getParameter("nomeinstituicao");
             String Cnpj = request.getParameter("cnpj");
             String situacao = request.getParameter("situacao");
+            String foto = request.getParameter("foto");
             
-            Instituicao oInstituicao = new Instituicao(idInstituicao, nomeInstituicao, Cnpj, situacao);
+            Instituicao oInstituicao = new Instituicao(idInstituicao, nomeInstituicao, Cnpj, situacao, foto);
             InstituicaoDAO dao = new InstituicaoDAO();      
             
             if(dao.cadastrar(oInstituicao)){

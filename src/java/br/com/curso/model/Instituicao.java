@@ -6,19 +6,24 @@ public class Instituicao {
     private String nomeInstituicao;
     private String cnpj;
     private String situacao;
+    private String foto;
 
     public Instituicao() {
         this.idInstituicao = 0;
         this.nomeInstituicao ="";
         this.cnpj = "";
         this.situacao = "A";
+        this.foto = "";
+
     }
 
-    public Instituicao(int idInstituicao, String nomeInstituicao, String cnpj, String situacao) {
+    public Instituicao(int idInstituicao, String nomeInstituicao, String cnpj, String situacao,String foto) {
         this.idInstituicao = idInstituicao;
         this.nomeInstituicao = nomeInstituicao;
         this.cnpj = cnpj;
         this.situacao = situacao;
+        this.foto = foto;
+
     }
 
     public int getIdInstituicao() {
@@ -52,7 +57,13 @@ public class Instituicao {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
-    
-    
-    
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+       
 }

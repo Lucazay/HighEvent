@@ -149,7 +149,7 @@ public class TipoAtividadeDAO implements GenericDAO {
         ResultSet rs = null;
         List<Object> resultado = new ArrayList<>();
         TipoAtividade oTipoatividade = null;
-        String sql = "select * from tipoatividade;";
+        String sql = "select * from tipoatividade";
         
         try{
             stmt = conexao.prepareStatement(sql);

@@ -197,7 +197,7 @@ public class FornecedorDAO implements GenericDAO{
         List<Object> resultado = new ArrayList<>();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        String sql= "Select p.*, f.* "
+        String sql= "Select p.*, f.idfornecedor, f.situacao, f.permitelogin "
                 + "from fornecedor f, pessoa p "
                 + "where f.idpessoa = p.idpessoa order by idPessoa";
         try{

@@ -10,7 +10,10 @@ public class Organizador extends Pessoa{
     private int idOrganizador;
     private String permiteLogin;
     private String situacao;
-    
+
+    public Organizador() {
+    }
+
     public Organizador(int idOrganizador, String permiteLogin, String situacao, int idPessoa, String nomeRazaoPessoa, String rglePessoa, 
             String cpfCnpjPessoa, Date dataNascFundPessoa, String telefonePessoa, Cidade cidade, String logradouroPessoa, String numLogradouroPessoa, 
             String bairroPessoa, String cepPessoa, String emailPessoa, String login, String senha, String foto) {
@@ -27,6 +30,7 @@ public class Organizador extends Pessoa{
         Organizador oOrganizador = new Organizador(0,"S","A",0,"","","", dataNascFundPessoa,"",oCidade,"","","","","","","", null);
         return oOrganizador;
     }
+
 
     public int getIdOrganizador() {
         return idOrganizador;

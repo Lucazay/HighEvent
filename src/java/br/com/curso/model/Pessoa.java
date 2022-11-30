@@ -1,6 +1,7 @@
 
 package br.com.curso.model;
 
+import br.com.curso.utils.Conversao;
 import java.util.Date;
 
 public class Pessoa {
@@ -20,6 +21,25 @@ public class Pessoa {
     private String login;
     private String senha;
     private String foto;
+
+    public Pessoa() {
+        this.idPessoa = 0;
+        this.nomeRazaoPessoa = "";
+        this.rglePessoa = "";
+        this.cpfCnpjPessoa = "";
+        this.dataNascFundPessoa = Conversao.dataAtual();
+        this.telefonePessoa = "";
+        this.cidade = new Cidade();
+        this.logradouroPessoa = "";
+        this.numLogradouroPessoa = "";
+        this.bairroPessoa = "";
+        this.cepPessoa = "";
+        this.emailPessoa = "";
+        this.login = "";
+        this.senha = "";
+        this.foto = "";
+
+    }
 
     public Pessoa(int idPessoa, String nomeRazaoPessoa, String rglePessoa, String cpfCnpjPessoa, Date dataNascFundPessoa, 
             String telefonePessoa, Cidade cidade, String logradouroPessoa, String numLogradouroPessoa, String bairroPessoa, String cepPessoa, 

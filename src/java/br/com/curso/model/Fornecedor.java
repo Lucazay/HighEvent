@@ -31,6 +31,9 @@ public class Fornecedor extends Pessoa{
         return oFornecedor;
     }
 
+    public Fornecedor() {
+    }
+
     public int getIdFornecedor() {
         return idFornecedor;
     }

@@ -37,13 +37,14 @@ public class InstituicaoDAO implements GenericDAO {
     public Boolean inserir(Object objeto) {
         Instituicao oInstituicao = (Instituicao) objeto;
         PreparedStatement stmt = null;
-        String sql = "insert into instituicao (nomeinstituicao, cnpj,situacao) values  (?, ?, ?)";
+        String sql = "insert into instituicao (nomeinstituicao, cnpj, situacao, foto) values  (?, ?, ?, ?)";
         
         try{
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, oInstituicao.getNomeInstituicao());
             stmt.setString(2, oInstituicao.getCnpj());
             stmt.setString(3, "A");
+            stmt.setString(4, oInstituicao.getFoto());
             stmt.execute();
             return true;
         } catch (Exception e){
@@ -64,14 +65,15 @@ public class InstituicaoDAO implements GenericDAO {
     public Boolean alterar(Object objeto) {
         Instituicao oInstituicao = (Instituicao) objeto;
         PreparedStatement stmt = null;
-        String sql = "update instituicao set nomeinstituicao=?, cnpj=?, situacao=? where idinstituicao=?";
+        String sql = "update instituicao set nomeinstituicao=?, cnpj=?, situacao=?, foto=? where idinstituicao=?";
         
         try{
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1, oInstituicao.getNomeInstituicao());
             stmt.setString(2, oInstituicao.getCnpj());
             stmt.setString(3, oInstituicao.getSituacao());
-            stmt.setInt(4, oInstituicao.getIdInstituicao());
+            stmt.setString(4, oInstituicao.getFoto());
+            stmt.setInt(5, oInstituicao.getIdInstituicao());
             stmt.execute();
             conexao.commit();
             return true;
@@ -137,7 +139,8 @@ public class InstituicaoDAO implements GenericDAO {
                 oInstituicao = new Instituicao( rs.getInt("idinstituicao"),
                                         rs.getString("nomeinstituicao"),
                                         rs.getString("cnpj"),
-                                        rs.getString("situacao"));  
+                                        rs.getString("situacao"),
+                                        rs.getString("foto"));  
             }
         } catch (Exception e){
             System.out.println("Problemas ao carregar instituicao! Erro: "+e.getMessage());
@@ -162,7 +165,8 @@ public class InstituicaoDAO implements GenericDAO {
                 oInstituicao = new Instituicao( rs.getInt("idinstituicao"),
                                         rs.getString("nomeinstituicao"),
                                         rs.getString("cnpj"),
-                                        rs.getString("situacao"));
+                                        rs.getString("situacao"),
+                                        rs.getString("foto"));
                 resultado.add(oInstituicao);
             }
         } catch (Exception e){

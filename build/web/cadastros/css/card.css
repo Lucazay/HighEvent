@@ -1,0 +1,26 @@
+.card_eventos {
+
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  font-family: 'poppins';
+
+}
+
+.container_card {
+
+  width: 70%;
+
+}
+
+.card_palestrantes {
+
+  min-height: 350px;
+  min-width: 150px;
+  max-width: 250px;
+  border-radius: 50px;
+  box-shadow: 5px 10px 20px rgba(0, 0, blue, alpha);
+
+}

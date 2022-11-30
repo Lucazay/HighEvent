@@ -25,6 +25,8 @@ public class OrganizadorListar extends HttpServlet {
             request.setAttribute("estados", oEstadoDAO.listar());
             request.getRequestDispatcher("/cadastros/organizador/organizador.jsp")
                         .forward(request, response);
+            request.getRequestDispatcher("/cadastros/organizador/organizadorFooter.jsp")
+                        .forward(request, response);
         } catch (Exception ex){
             System.out.println("Problemas no Servlet ao Listar"
                     + "Organizador! Erro: " + ex.getMessage());

@@ -1,0 +1,226 @@
+body {
+
+    background: rgb(181,0,186);
+    background: -moz-radial-gradient(circle, rgba(181,0,186,1) 1%, rgba(106,0,255,1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(181,0,186,1) 1%, rgba(106,0,255,1) 100%);
+    background: radial-gradient(circle, rgba(181,0,186,1) 1%, rgba(106,0,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b500ba",endColorstr="#6a00ff",GradientType=1);
+}
+
+#caixa {
+
+    background: #212529;
+    width: 400px;
+    height: 500px;
+    padding-top: 50px;
+    border-radius: 50px;
+    box-shadow: rgba(10, 10, 10, 0.438) 2px 2px 2px 2px;
+    color: #fff;
+
+}
+
+
+
+
+#caixa h1{
+
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0px;
+
+}
+
+#caixa #cadastre-se {
+
+    margin-top: 40px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+
+
+}
+
+#cadastre-se a {
+
+    color: #fff;
+
+
+}
+
+#cab img {
+
+width: 50px;
+
+
+
+}
+
+#cab {
+
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+}
+
+#btn-control {
+
+    text-align: center;
+    justify-content: center;
+    
+
+}
+
+.btn_site {
+
+    display: flex;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.btn_site a {
+
+    margin: 10px;
+
+}
+
+.btn-1{
+
+    border: none;
+    text-decoration: none;
+    height: 0%;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 30px;
+    background-image: linear-gradient(120deg, #3a61fe, #d43afe);
+    border-radius: 100px;
+    position: relative;
+    color: white;
+    animation: nome  3s linear infinite alternate;
+
+}
+
+.btn-1:before{ 
+    content: '';
+    position: absolute;
+    height: 100%;
+    border: none;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+    top: 15px;
+    left: 0px;
+    filter:blur(30px);
+    opacity: 0.5;
+
+
+}
+
+.btn-1:hover a{
+    
+    color: white;
+    list-style: none;
+    
+}
+
+input {
+
+    caret-color: #d43afe;
+    padding-bottom: 30px;
+
+    
+
+}
+
+.input-control {
+
+    padding-bottom: 20px;
+
+}
+
+#usuario, #nome {
+
+    border-color: #3a61fe;
+    animation: nome  3s linear infinite alternate;
+
+}
+
+form {
+
+    padding-top: 50px;
+
+}
+
+
+@keyframes nome {
+
+    from {
+
+        filter: hue-rotate(0deg);
+
+ }
+ 
+    to {
+
+        filter: hue-rotate(60deg);
+
+
+    }
+
+    
+
+}
+
+
+
+@media (min-width: 490px) and (max-width: 550px) {
+
+    #caixa {
+
+    width: 300px;
+    height: 500px;
+    padding-top: 100px;
+    border-radius: 50px;
+    box-shadow: rgba(10, 10, 10, 0.438) 2px 2px 2px 2px;
+
+}
+
+form {
+
+    padding-top: 10px;
+
+}
+
+#cab img {
+
+    width: 40px;
+    
+    
+    
+    }
+
+}
+
+@media (min-width: 0px) and (max-width: 489px) {
+
+    #caixa {
+
+
+    width: 250px;
+    height: 450px;
+    padding-top: 40px;
+    border-radius: 50px;
+    box-shadow: rgba(10, 10, 10, 0.438) 2px 2px 2px 2px;
+
+}
+
+form {
+
+    padding-top: 10px;
+
+}
+
+
+}
